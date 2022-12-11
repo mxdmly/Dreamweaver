@@ -1,0 +1,42 @@
+@bbackGround : #222222;
+@button_backGround : #0070e0;
+@fontColor: #FFFFFF;
+
+#mybrush {
+    button {
+        background-color: @bbackGround;
+        padding-top: 5px;
+        border: 2px solid #121212;
+        svg, span {
+            color: @fontColor;
+            fill: @fontColor;
+        }
+    }
+    button:hover {
+        background-color: @button_backGround;
+        filter: brightness(130%);
+        cursor: pointer;
+    }
+    button:active {
+        filter: brightness(70%);
+    }
+    font{
+        user-select: none;
+    }
+}
+#text {
+    div{
+        background-color:rgba(0.5,0.5,0.5,0);
+        position: fixed;
+        left:500px;
+        top:500px;
+    }
+}
+
+.ant-collapse-item:last-child > .ant-collapse-content{
+    border-radius: 0px;
+}
+.ant-collapse > .ant-collapse-item:last-child, .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header{
+    border-radius: 0px;
+    user-select: none;
+}
