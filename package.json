@@ -1,0 +1,28 @@
+{
+  "name": "@mxdmly/dreamweaver",
+  "version": "1.0.0",
+  "description": "An drawing/artboard for use in html5",
+  "main": "Dreamweaver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxdmly/Dreamweaver.git"
+  },
+  "keywords": [
+    "html5",
+    "drawing",
+    "draw",
+    "artboard",
+    "art",
+    "React",
+    "Vue"
+  ],
+  "author": "mxdmly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mxdmly/Dreamweaver/issues"
+  },
+  "homepage": "https://github.com/mxdmly/Dreamweaver#readme"
+}

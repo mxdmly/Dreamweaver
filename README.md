@@ -1,2 +1,2 @@
 # Dreamweaver
-For html5's drawing class
+An drawing/artboard for use in html5
