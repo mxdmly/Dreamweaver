@@ -1,7 +1,7 @@
 {
-  "name": "@mxdmly/dreamweaver",
-  "version": "1.0.0",
-  "description": "An drawing/artboard for use in html5",
+  "name": "doodle-board",
+  "version": "1.0.9",
+  "description": "A simple doodle board",
   "main": "Dreamweaver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,14 +11,25 @@
     "url": "git+https://github.com/mxdmly/Dreamweaver.git"
   },
   "keywords": [
-    "html5",
     "drawing",
     "draw",
-    "artboard",
+    "doodle",
+    "board",
+    "paint",
     "art",
     "React",
     "Vue"
   ],
+  "files":[
+    "Dreamweaver.js",
+    "Dreamweaver.d.ts"
+  ],
+  "exports":{
+    ".":{
+      "default": "./Dreamweaver.js",
+      "types": "./Dreamweaver.d.ts"
+    }
+  },
   "author": "mxdmly",
   "license": "MIT",
   "bugs": {
