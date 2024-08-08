@@ -1,0 +1,27 @@
+#bar > button {
+  background-color: #222222;
+  padding-top: 5px;
+  border: 2px solid #121212;
+}
+#bar > button:hover{
+  background-color: #0070e0;
+  filter: brightness(130%);
+  cursor: pointer;
+}
+#bar > button:active{
+  filter: brightness(70%);
+}
+#bar > button > svg, #bar > button > span {
+  color: #FFFFFF;
+  fill: #FFFFFF;
+}
+#bar > label {
+  user-select: none;
+}
+
+#text > div{
+  background-color:rgba(0.5,0.5,0.5,0);
+  position: fixed;
+  left:500px;
+  top:500px;
+}
