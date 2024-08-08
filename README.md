@@ -2,6 +2,8 @@
 A simple doodle for use in html5
 <br />
 Pure JavaScript, No other dependence
+<br />
+![image](https://github.com/user-attachments/assets/116d3351-68eb-4f5d-a743-5694b8a4bcbb)
 ## Example
 ``` html
 <canvas id="draw" style="width:200px; height:200px; border: 2px solid #94FC13;"></canvas>
