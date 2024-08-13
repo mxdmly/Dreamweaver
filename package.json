@@ -1,6 +1,6 @@
 {
   "name": "doodle-board",
-  "version": "1.0.13",
+  "version": "1.1.2",
   "description": "A simple doodle board",
   "main": "Dreamweaver.js",
   "scripts": {
