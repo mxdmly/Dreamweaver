@@ -124,18 +124,18 @@ export default class Dreamweaver {
    * @param {*} i 一个数值，代表笔触大小
    */
   setSize(i) {
-  DW_curtain.ctx.lineWidth = i;
+    DW_curtain.ctx.lineWidth = i;
   }
   sendCanvas() {
-  return DW_curtain.canvas;
+    return DW_curtain.canvas;
   }
-  setCanvasSize(w, h, left, top) {
-  if (DW_curtain.canvas) {
-    DW_curtain.canvas.style.left = left;
-    // DW_curtain.canvas.style.top = top;
-    DW_curtain.size.width = DW_curtain.canvas.width;
-    DW_curtain.size.height = DW_curtain.canvas.height;
-  }
+  setCanvasSize(dw_curtain = DW_curtain.canvas ,w, h, left, top) {
+    if (dw_curtain.canvas) {
+      dw_curtain.canvas.style.left = left;
+      // dw_curtain.canvas.style.top = top;
+      dw_curtain.size.width = dw_curtain.canvas.width;
+      dw_curtain.size.height = dw_curtain.canvas.height;
+    }
   }
   autoCreateTools(autoCreateTools = false) {
     if (autoCreateTools == false) {
@@ -180,10 +180,10 @@ export default class Dreamweaver {
     `;
     document.getElementById('tool').innerHTML = `
       <button id="open">
-        <el-icon style="height: 18px;width: 16px;"><Lock /></el-icon>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </button>
       <button id="close">
-        <el-icon style="height: 18px;width: 16px;"><Unlock /></el-icon>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
       </button>
       <button id="undo">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
@@ -497,7 +497,7 @@ function chargeShapeFun(id, ctx) {
  * @param {*} canvasContainer 画布容器
  * @returns 
  */
-function featureFun(id, canvasContainer) {
+export function featureFun(id, canvasContainer) {
   const { ctx, history } = canvasContainer;
   ctx.globalCompositeOperation = 'source-over';
   switch (id) {
@@ -542,7 +542,6 @@ function featureFun(id, canvasContainer) {
     break;
   }
 }
-
 /**
  * 鼠标在绘画框移动就会触发这个函数
  */
