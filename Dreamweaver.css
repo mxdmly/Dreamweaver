@@ -4,12 +4,12 @@
   border: 2px solid #121212;
 }
 #bar > button:hover{
-  background-color: #0070e0;
-  filter: brightness(130%);
+  background-color: #3075b9;
+  filter: brightness(30%);
   cursor: pointer;
 }
 #bar > button:active{
-  filter: brightness(70%);
+  filter: brightness(20%);
 }
 #bar > button > svg, #bar > button > span {
   color: #FFFFFF;
@@ -24,4 +24,11 @@
   position: fixed;
   left:500px;
   top:500px;
+}
+
+button{
+  margin: 1px;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
 }

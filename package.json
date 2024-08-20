@@ -1,6 +1,6 @@
 {
   "name": "doodle-board",
-  "version": "1.1.12",
+  "version": "1.1.17",
   "description": "A simple doodle board",
   "main": "Dreamweaver.dist.js",
   "scripts": {
@@ -22,13 +22,13 @@
   ],
   "files":[
     "Dreamweaver.dist.js",
-    "Dreamweaver.d.ts",
+    "Dreamweaver.dist.d.ts",
     "Dreamweaver.css"
   ],
   "exports":{
     ".":{
       "default": "./Dreamweaver.dist.js",
-      "types": "./Dreamweaver.d.ts"
+      "types": "./Dreamweaver.dist.d.ts"
     }
   },
   "author": "mxdmly",

@@ -94,7 +94,7 @@ export default class Dreamweaver {
     button.onclick = function (ev) {
       ev.cancelBubble = true; //阻止DOM冒泡，提高性能
       DW_curtain.shapeFun = chargeShapeFun(button.id, DW_curtain.ctx); //返回一个描述绘画路径的函数
-      button.style = "background-color:#002e5c; border:2px solid #000000;"; //把当前按下的按钮设置一个颜色方便辨认，以后改成calss样式
+      button.style = "background-color:#46a3ff; border:2px solid #000000;"; //把当前按下的按钮设置一个颜色方便辨认，以后改成calss样式
       DW_brush.div.querySelectorAll("button").forEach(function (b) {
       if (b.id !== button.id) {
         b.style = ""; //把非当前按下的按钮背景改回普通颜色
@@ -141,74 +141,82 @@ export default class Dreamweaver {
     if (autoCreateTools == false) {
       return
     }
-    document.getElementById('painter').innerHTML = `
-      <button id="pen">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path
-          d="M7.127 22.564l-7.126 1.436 1.438-7.125 5.688 5.689zm-4.274-7.104l5.688 5.689 15.46-15.46-5.689-5.689-15.459 15.46z" />
-        </svg>
-      </button>
-      <button id="round">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path
-          d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z" />
-        </svg>
-      </button>
-      <button id="square">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path d="M22 2v20h-20v-20h20zm2-2h-24v24h24v-24z" />
-        </svg>
-      </button>
-      <button id="arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path
-          d="m18.787 9.473s-4.505-4.502-6.259-6.255c-.147-.146-.339-.22-.53-.22-.192 0-.384.074-.531.22-1.753 1.753-6.256 6.252-6.256 6.252-.147.147-.219.339-.217.532.001.19.075.38.221.525.292.293.766.295 1.056.004l4.977-4.976v14.692c0 .414.336.75.75.75.413 0 .75-.336.75-.75v-14.692l4.978 4.978c.289.29.762.287 1.055-.006.145-.145.219-.335.221-.525.002-.192-.07-.384-.215-.529z" />
-        </svg>
-      </button>
-      <button id="rubber">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path
-          d="M5.662 23l-5.369-5.365c-.195-.195-.293-.45-.293-.707 0-.256.098-.512.293-.707l14.929-14.928c.195-.194.451-.293.707-.293.255 0 .512.099.707.293l7.071 7.073c.196.195.293.451.293.708 0 .256-.097.511-.293.707l-11.216 11.219h5.514v2h-12.343zm3.657-2l-5.486-5.486-1.419 1.414 4.076 4.072h2.829zm.456-11.429l-4.528 4.528 5.658 5.659 4.527-4.53-5.657-5.657z" />
-        </svg>
-      </button>
-      <button id="text">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-        <path
-          d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z" />
-        </svg>
-      </button>
-    `;
-    document.getElementById('tool').innerHTML = `
-      <button id="open">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-      </button>
-      <button id="close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
-      </button>
-      <button id="undo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path
-            d="M19.885 5.515c-4.617-4.618-12.056-4.676-16.756-.195l-2.129-2.258v7.938h7.484l-2.066-2.191c2.82-2.706 7.297-2.676 10.074.1 2.992 2.993 2.664 7.684-.188 10.319l3.314 3.5c4.716-4.226 5.257-12.223.267-17.213z" />
-        </svg>
-      </button>
-      <button id="redo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path
-            d="M4.115 5.515c4.617-4.618 12.056-4.676 16.756-.195l2.129-2.258v7.938h-7.484l2.066-2.191c-2.819-2.706-7.297-2.676-10.074.1-2.992 2.993-2.664 7.684.188 10.319l-3.314 3.5c-4.716-4.226-5.257-12.223-.267-17.213z" />
-        </svg>
-      </button>
-      <button id="save">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" />
-        </svg>
-      </button>
-      <button id="delete">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <path
-            d="M19 14.586l3.586-3.586 1.414 1.414-3.586 3.586 3.586 3.586-1.414 1.414-3.586-3.586-3.586 3.586-1.414-1.414 3.586-3.586-3.586-3.586 1.414-1.414 3.586 3.586zm-7 6.414h-12v-2h12v2zm0-4.024h-12v-2h12v2zm0-3.976h-12v-2h12v2zm12-4h-24v-2h24v2zm0-4h-24v-2h24v2z" />
-        </svg>
-      </button>
-    `;
+    //画笔
+    let painter_div = document.getElementById('painter')
+    if (null == painter_div.querySelector('#pen')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'pen'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7.127 22.564l-7.126 1.436 1.438-7.125 5.688 5.689zm-4.274-7.104l5.688 5.689 15.46-15.46-5.689-5.689-15.459 15.46z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    if (null == painter_div.querySelector('#round')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'round'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    if (null == painter_div.querySelector('#square')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'square'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M22 2v20h-20v-20h20zm2-2h-24v24h24v-24z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    if (null == painter_div.querySelector('#arrow')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'arrow'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="m18.787 9.473s-4.505-4.502-6.259-6.255c-.147-.146-.339-.22-.53-.22-.192 0-.384.074-.531.22-1.753 1.753-6.256 6.252-6.256 6.252-.147.147-.219.339-.217.532.001.19.075.38.221.525.292.293.766.295 1.056.004l4.977-4.976v14.692c0 .414.336.75.75.75.413 0 .75-.336.75-.75v-14.692l4.978 4.978c.289.29.762.287 1.055-.006.145-.145.219-.335.221-.525.002-.192-.07-.384-.215-.529z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    if (null == painter_div.querySelector('#rubber')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'rubber'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M5.662 23l-5.369-5.365c-.195-.195-.293-.45-.293-.707 0-.256.098-.512.293-.707l14.929-14.928c.195-.194.451-.293.707-.293.255 0 .512.099.707.293l7.071 7.073c.196.195.293.451.293.708 0 .256-.097.511-.293.707l-11.216 11.219h5.514v2h-12.343zm3.657-2l-5.486-5.486-1.419 1.414 4.076 4.072h2.829zm.456-11.429l-4.528 4.528 5.658 5.659 4.527-4.53-5.657-5.657z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    if (null == painter_div.querySelector('#text')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'text'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M22 0h-20v6h1.999c0-1.174.397-3 2.001-3h4v16.874c0 1.174-.825 2.126-2 2.126h-1v2h9.999v-2h-.999c-1.174 0-2-.952-2-2.126v-16.874h4c1.649 0 2.02 1.826 2.02 3h1.98v-6z" /></svg>`
+      painter_div.appendChild(temp_btn)
+    }
+    //工具箱
+    let tool_div = document.getElementById('tool')
+    if (null == tool_div.querySelector('#delete')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'delete'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M19 14.586l3.586-3.586 1.414 1.414-3.586 3.586 3.586 3.586-1.414 1.414-3.586-3.586-3.586 3.586-1.414-1.414 3.586-3.586-3.586-3.586 1.414-1.414 3.586 3.586zm-7 6.414h-12v-2h12v2zm0-4.024h-12v-2h12v2zm0-3.976h-12v-2h12v2zm12-4h-24v-2h24v2zm0-4h-24v-2h24v2z" /></svg>`
+      tool_div.appendChild(temp_btn)
+    }
+    if (null == tool_div.querySelector('#save')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'save'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z" /></svg>`
+      tool_div.insertBefore(temp_btn, tool_div.querySelector('#delete'))
+    }
+    if (null == tool_div.querySelector('#redo')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'redo'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M4.115 5.515c4.617-4.618 12.056-4.676 16.756-.195l2.129-2.258v7.938h-7.484l2.066-2.191c-2.819-2.706-7.297-2.676-10.074.1-2.992 2.993-2.664 7.684.188 10.319l-3.314 3.5c-4.716-4.226-5.257-12.223-.267-17.213z" /></svg>`
+      tool_div.insertBefore(temp_btn, tool_div.querySelector('#save'))
+    }
+    if (null == tool_div.querySelector('#undo')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'undo'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M19.885 5.515c-4.617-4.618-12.056-4.676-16.756-.195l-2.129-2.258v7.938h7.484l-2.066-2.191c2.82-2.706 7.297-2.676 10.074.1 2.992 2.993 2.664 7.684-.188 10.319l3.314 3.5c4.716-4.226 5.257-12.223.267-17.213z" /></svg>`
+      tool_div.insertBefore(temp_btn, tool_div.querySelector('#redo'))
+    }
+    if (null == tool_div.querySelector('#close')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'close'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>`
+      tool_div.insertBefore(temp_btn, tool_div.querySelector('#undo'))
+    }
+    if (null == tool_div.querySelector('#open')) {
+      let temp_btn = document.createElement('button')
+      temp_btn.id = 'open'
+      temp_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`
+      tool_div.insertBefore(temp_btn, tool_div.querySelector('#close'))
+    }
   }
 }
 
