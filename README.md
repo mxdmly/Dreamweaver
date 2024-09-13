@@ -59,11 +59,13 @@ new Dreamweaver(document.getElementById("draw"), document.getElementById("bar"),
 </div>
 ```
 ``` typescript
-import Dreamweaver, { DW_curtain, featureFun } from 'doodle-board';
+import Dreamweaver, { DW_curtain, DW_brush, featureFun, colorBarDraw } from 'doodle-board';
 const dw_curtain = DW_curtain;
+const dw_brush = DW_brush
 window.onload = () => {
   dw_curtain.canvas = document.getElementById("draw");
-  new Dreamweaver(dw_curtain.canvas, document.getElementById("bar"), true)
+  dw_brush.div = document.getElementById("bar")
+  new Dreamweaver(dw_curtain.canvas, dw_brush.div, true)
   document.getElementById('save').addEventListener('click', () => {  
     saveImg();
   });  
@@ -74,5 +76,10 @@ const saveImg = () => {
   link.download = 'image.png';
   link.href = featureFun('save', dw_curtain).src
   link.click()
+}
+// Change brush color
+const changeColor = () => {
+  dw_curtain.ctx.strokeStyle = "rgba(255,0,0,1)";
+  colorBarDraw(2, dw_brush, dw_curtain)
 }
 ```

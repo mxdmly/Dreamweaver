@@ -40,14 +40,14 @@ export default class Dreamweaver {
     //获取并设置宽高
     DW_curtain.size.width = DW_curtain.canvas.width;
     DW_curtain.size.height = DW_curtain.canvas.height;
-    DW_curtain.canvas.onmousemove = function (ev) {
+    DW_curtain.canvas.onpointermove = function (ev) {
     mouseAxis.lastX = mouseAxis.nowX;
     mouseAxis.lastY = mouseAxis.nowY;
     mouseAxis.nowX = ev.offsetX;
     mouseAxis.nowY = ev.offsetY;
     drawPicture(mouseAxis, DW_curtain);
     };
-    DW_curtain.canvas.onmousedown = function (ev) {
+    DW_curtain.canvas.onpointerdown = function (ev) {
     DW_curtain.draw = true;
     mouseAxis.firstX = ev.offsetX;
     mouseAxis.firstY = ev.offsetY;
@@ -59,7 +59,7 @@ export default class Dreamweaver {
     console.log(DW_curtain.history_current + 1, DW_curtain.history.length - DW_curtain.history_current + 1);//测试用的
     DW_curtain.history.splice(DW_curtain.history_current + 1, DW_curtain.history.length - DW_curtain.history_current - 1);
     }
-    DW_curtain.canvas.onmouseup = function (ev) {
+    DW_curtain.canvas.onpointerup = function (ev) {
     DW_curtain.draw = false;
     //存储画布历史记录，用于重绘与撤销
     let img = new Image();
@@ -80,11 +80,11 @@ export default class Dreamweaver {
     mouseAxis.lastY = mouseAxis.nowY;
     mouseAxis.nowX = ev.offsetX;
     mouseAxis.nowY = ev.offsetY;
-    draw(mouseAxis, DW_brush, DW_curtain);
+    colorBarDraw(mouseAxis, DW_brush, DW_curtain);
     };
     DW_brush.colorBar.canvas.onmousedown = function (ev) {
     DW_brush.colorBar.draw = true;
-    draw(mouseAxis, DW_brush, DW_curtain);//点击后也能选中颜色
+    colorBarDraw(mouseAxis, DW_brush, DW_curtain);//点击后也能选中颜色
     }
     DW_brush.colorBar.canvas.onmouseup = function (ev) {
     DW_brush.colorBar.draw = false;
@@ -116,7 +116,7 @@ export default class Dreamweaver {
     //加载颜色选择器
     updateColorBar(DW_brush.colorBar.array, DW_brush.colorBar.ctx);
     updateColorSlider(0, DW_brush.colorBar);
-    draw(mouseAxis, DW_brush, DW_curtain);
+    colorBarDraw(mouseAxis, DW_brush, DW_curtain);
   }
   }
   /**
@@ -238,7 +238,7 @@ export const DW_curtain = {
   history_current: -1,
 };
 /**画笔盒 */
-const DW_brush = {
+export const DW_brush = {
   div: null,
   text: null,
   /** 调色盘 */
@@ -346,7 +346,7 @@ function clear(canvasContainer) {
 /**
  * 鼠标在颜色框移动就会触发这个函数
  */
-function draw(mouseAxis, canvasContainer, canvasContainer2) {
+export function colorBarDraw(mouseAxis, canvasContainer, canvasContainer2) {
   const { colorBar } = canvasContainer;
   if (colorBar.draw === false) return;
   clear(colorBar);

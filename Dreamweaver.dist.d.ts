@@ -5,5 +5,5 @@ declare module 'doodle-board' {
     constructor(...options: any);
     // 其他方法和属性
   }
-  export {DW_curtain, featureFun}
+  export {DW_curtain, DW_brush, featureFun, colorBarDraw}
 }
